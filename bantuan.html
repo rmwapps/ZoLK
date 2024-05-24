@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona Loket | Bantuan</title>
+    <style>
+        /* CSS for loader animation */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 20% auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader element -->
+    <div class="loader"></div>
+
+    <script type="text/javascript">
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = "1e652069-9ee7-4c7f-84df-49a6f33c8efd";
+        (function() {
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            // Simulating delay for demonstration purpose
+            setTimeout(function() {
+                // Remove loader and open chatbox
+                document.querySelector('.loader').style.display = 'none';
+                $crisp.push(["do", "chat:open"]);
+            }, 3000); // Adjust the timeout as needed
+        });
+    </script>
+</body>
+</html>
