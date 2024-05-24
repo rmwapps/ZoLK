@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zona Loket | Bantuan</title>
+    <title>Chatbox Auto Open with Loader and Blocked Elements</title>
     <style>
         /* CSS for loader animation */
         .loader {
@@ -41,8 +41,16 @@
         window.addEventListener('load', function() {
             // Simulating delay for demonstration purpose
             setTimeout(function() {
-                // Remove loader and open chatbox
+                // Remove loader
                 document.querySelector('.loader').style.display = 'none';
+
+                // Target and remove the elements
+                var elementsToRemove = document.querySelectorAll('.cc-1cff[data-mode="chat"]');
+                elementsToRemove.forEach(function(element) {
+                    element.parentNode.removeChild(element);
+                });
+
+                // Open chatbox
                 $crisp.push(["do", "chat:open"]);
             }, 3000); // Adjust the timeout as needed
         });
