@@ -26,11 +26,12 @@
     <div class="loader"></div>
 
     <script type="text/javascript">
+        // Crisp chat integration
         window.$crisp = [];
         window.CRISP_WEBSITE_ID = "1e652069-9ee7-4c7f-84df-49a6f33c8efd";
         (function() {
-            d = document;
-            s = d.createElement("script");
+            var d = document;
+            var s = d.createElement("script");
             s.src = "https://client.crisp.chat/l.js";
             s.async = 1;
             d.getElementsByTagName("head")[0].appendChild(s);
@@ -42,16 +43,33 @@
             // Simulating delay for demonstration purpose
             setTimeout(function() {
                 // Remove loader
-                document.querySelector('.loader').style.display = 'none';
+                var loader = document.querySelector('.loader');
+                if (loader) {
+                    loader.style.display = 'none';
+                }
 
                 // Target and remove the elements
                 var elementsToRemove = document.querySelectorAll('.cc-1cff[data-mode="chat"]');
                 elementsToRemove.forEach(function(element) {
-                    element.parentNode.removeChild(element);
+                    if (element && element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
                 });
 
                 // Open chatbox
-                $crisp.push(["do", "chat:open"]);
+                window.$crisp.push(["do", "chat:open"]);
+
+                // Ensure styles are injected after Crisp chat has fully loaded
+                setTimeout(function() {
+                    // Inject custom CSS to change the background color of the specific span element
+                    var style = document.createElement('style');
+                    style.innerHTML = `
+                        .cc-1yd3.cc-1ev6.cc-x1l1.cc-qfnu.cc-1v0h {
+                            background-color: #D01202 !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }, 1000); // Adjust the timeout as needed to ensure it happens after Crisp loads
             }, 3000); // Adjust the timeout as needed
         });
     </script>
