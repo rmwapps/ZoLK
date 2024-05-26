@@ -1,100 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zona Loket | Bantuan</title>
-    <style>
-        /* CSS for loader animation */
-        .loader {
-            border: 4px solid #f3f3f3; /* Light grey */
-            border-top: 4px solid #D01202; /* Red */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 2s linear infinite;
-            margin: 20% auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zona Loket | Bantuan</title>
+<style>
+    /* Custom CSS to recolor chatbox background */
+    #crisp-chatbox > div > div > div.cc-lso1a > div {
+        background-color: #d01300 !important;
+    }
+    #cc-q205d > div > div.cc-1hvof.wp-exclude-emoji > div > div > span.cc-vonk8 > span > span.cc-m06tg.cc-olo99.cc-1uul7.cc-1kgzy.cc-co79q {
+        background-color: #d01300 !important;
+    }
+    #crisp-chatbox > div > div > div.cc-lso1a > div > span.cc-9yaqp > a.cc-3yw77.cc-coh7k.cc-1cx9a {
+        background-color: #d01300 !important;
+    }
+<script type="text/javascript">
+    window.$crisp=[];window.CRISP_WEBSITE_ID="1e652069-9ee7-4c7f-84df-49a6f33c8efd";
+    (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;
+    d.getElementsByTagName("head")[0].appendChild(s);})();
+    
+    // Auto open the chatbox
+    window.$crisp.push(["do", "chat:open"]);
+</script>
 </head>
 <body>
-    <!-- Loader element -->
-    <div class="loader"></div>
-
-    <script type="text/javascript">
-        // Crisp chat integration
-        window.$crisp = [];
-        window.CRISP_WEBSITE_ID = "1e652069-9ee7-4c7f-84df-49a6f33c8efd";
-        (function() {
-            var d = document;
-            var s = d.createElement("script");
-            s.src = "https://client.crisp.chat/l.js";
-            s.async = 1;
-            d.getElementsByTagName("head")[0].appendChild(s);
-        })();
-    </script>
-
-    <script type="text/javascript">
-        window.addEventListener('load', function() {
-            // Inject custom CSS right after HTML loaded
-            var style = document.createElement('style');
-            style.innerHTML = `
-                .cc-1yd3.cc-1ev6.cc-x1l1.cc-qfnu.cc-1v0h {
-                    background-color: #D01202 !important;
-                }
-            `;
-            document.head.appendChild(style);
-        });
-    </script>
-
-    <script type="text/javascript">
-        window.addEventListener('load', function() {
-            // Simulating delay for demonstration purpose
-            setTimeout(function() {
-                // Remove loader
-                var loader = document.querySelector('.loader');
-                if (loader) {
-                    loader.style.display = 'none';
-                }
-
-                // Target and remove the elements
-                var elementsToRemove = document.querySelectorAll('.cc-1cff[data-mode="chat"]');
-                elementsToRemove.forEach(function(element) {
-                    if (element && element.parentNode) {
-                        element.parentNode.removeChild(element);
-                    }
-                });
-
-                // Open chatbox
-                window.$crisp.push(["do", "chat:open"]);
-
-                // Ensure styles are injected after Crisp chat has fully loaded
-                setTimeout(function() {
-                    // Inject custom CSS to change the background color of the specific span element
-                    var style = document.createElement('style');
-                    style.innerHTML = `
-                        .cc-1yd3.cc-1ev6.cc-x1l1.cc-qfnu.cc-1v0h {
-                            background-color: #D01202 !important;
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }, 1000); // Wait 1000 ms after opening the chatbox
-
-                // Second attempt to remove elements after a short delay
-                setTimeout(function() {
-                    var elementsToRemoveSecond = document.querySelectorAll('.cc-1cff[data-mode="chat"]');
-                    elementsToRemoveSecond.forEach(function(element) {
-                        if (element && element.parentNode) {
-                            element.parentNode.removeChild(element);
-                        }
-                    });
-                }, 5000); // Wait 5 seconds for a second attempt
-            }, 3000); // Adjust the timeout as needed
-        });
-    </script>
+<!-- The chatbox will automatically be loaded here -->
 </body>
 </html>
