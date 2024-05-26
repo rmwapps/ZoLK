@@ -8,7 +8,7 @@
         /* CSS for loader animation */
         .loader {
             border: 4px solid #f3f3f3; /* Light grey */
-            border-top: 4px solid #3498db; /* Blue */
+            border-top: 4px solid #D01202; /* Red */
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -36,6 +36,19 @@
             s.async = 1;
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            // Inject custom CSS right after HTML loaded
+            var style = document.createElement('style');
+            style.innerHTML = `
+                .cc-1yd3.cc-1ev6.cc-x1l1.cc-qfnu.cc-1v0h {
+                    background-color: #D01202 !important;
+                }
+            `;
+            document.head.appendChild(style);
+        });
     </script>
 
     <script type="text/javascript">
@@ -69,7 +82,17 @@
                         }
                     `;
                     document.head.appendChild(style);
-                }, 1000); // Adjust the timeout as needed to ensure it happens after Crisp loads
+                }, 1000); // Wait 1000 ms after opening the chatbox
+
+                // Second attempt to remove elements after a short delay
+                setTimeout(function() {
+                    var elementsToRemoveSecond = document.querySelectorAll('.cc-1cff[data-mode="chat"]');
+                    elementsToRemoveSecond.forEach(function(element) {
+                        if (element && element.parentNode) {
+                            element.parentNode.removeChild(element);
+                        }
+                    });
+                }, 5000); // Wait 5 seconds for a second attempt
             }, 3000); // Adjust the timeout as needed
         });
     </script>
