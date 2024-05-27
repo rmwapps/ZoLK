@@ -35,12 +35,24 @@
             });
         }
 
+        // Function to replace text in the DOM
+        function replaceText(oldText, newText) {
+            var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+            var node;
+            while (node = walker.nextNode()) {
+                if (node.nodeValue.includes(oldText)) {
+                    node.nodeValue = node.nodeValue.replace(new RegExp(oldText, 'g'), newText);
+                }
+            }
+        }
+
         // MutationObserver to observe changes in the DOM
         function observeDOMChanges() {
             var observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function(mutation) {
                     if (mutation.addedNodes.length) {
                         removeElements();
+                        replaceText("PT RELASI MAHAKARYA", "Zona Loket");
                     }
                 });
             });
